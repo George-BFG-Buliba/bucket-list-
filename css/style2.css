@@ -110,3 +110,13 @@ a.button.active {
   transform: rotate(135deg);
   transition: transform 0.5s;
 }
+
+.entry:not(:first-of-type)
+{
+    margin-top: 50px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
+}

@@ -1,51 +1,59 @@
-<<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>view buckets</title>
+  <title>Create a Bucket List </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style2.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container">
-	<div class="row">
-		<input type="hidden" name="count" value="1" />
+  <center><div class="row">
         <div class="control-group" id="fields">
-            <label class="control-label" for="field1">Nice Multiple Form Fields</label>
-            <div class="controls" id="profs"> 
-                <form class="input-append">
-                    <div id="field"><input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Type something" data-items="8"/><button id="b1" class="btn add-more" type="button">+</button></div>
+            <label class="control-label" for="field1" style="font-size: 40px; color: white;">view add and remove your buckets</label>
+            <div class="controls"> 
+                <form role="form" autocomplete="off">
+                    <div class="entry input-group col-xs-3">
+                        <input class="form-control" name="fields[]" type="text" placeholder="Type something" />
+                      <span class="input-group-btn">
+                            <button class="btn btn-success btn-add" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
                 </form>
             <br>
-            <small>Press + to add another form field :)</small>
+            <small style="font-size: 14px; color: white;">Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field :)</small>
             </div>
         </div>
-	</div>
+  </div>
 </div>
-<script>$(document).ready(function(){
-    var next = 1;
-    $(".add-more").click(function(e){
+</center>
+<script>$(function()
+{
+    $(document).on('click', '.btn-add', function(e)
+    {
         e.preventDefault();
-        var addto = "#field" + next;
-        var addRemove = "#field" + (next);
-        next = next + 1;
-        var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
-        var newInput = $(newIn);
-        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
-        var removeButton = $(removeBtn);
-        $(addto).after(newInput);
-        $(addRemove).after(removeButton);
-        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
-        $("#count").val(next);  
-        
-            $('.remove-me').click(function(e){
-                e.preventDefault();
-                var fieldNum = this.id.charAt(this.id.length-1);
-                var fieldID = "#field" + fieldNum;
-                $(this).remove();
-                $(fieldID).remove();
-            });
-    });
-    
 
-    
+        var controlForm = $('.controls form:first'),
+            currentEntry = $(this).parents('.entry:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+        newEntry.find('input').val('');
+        controlForm.find('.entry:not(:last) .btn-add')
+            .removeClass('btn-add').addClass('btn-remove')
+            .removeClass('btn-success').addClass('btn-danger')
+            .html('<span class="glyphicon glyphicon-minus"></span>');
+    }).on('click', '.btn-remove', function(e)
+    {
+    $(this).parents('.entry:first').remove();
+
+    e.preventDefault();
+    return false;
+  });
 });
 </script>
 
