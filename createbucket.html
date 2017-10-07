@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Create a Bucket List </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style2.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+ <div class="start">
+  	<img src="images/form.jpg" class="img-responsive">
+  </div>
+<div class="container-fluid">
+<h1>Create your bucket List<p>click the plus</p></h1>
+<div class='wrap'>
+  <div class='content'>
+    <h2>Create Your Buckets</h2>
+       <form>
+ <fieldset>
+  My Email : <input type="email"><br></br>
+  Interests: <input type="text"><br></br>
+  Date of birth: <input type="text">
+  <input type="date">
+ </fieldset>
+ <center><a href="signup.html" style="font-size: 17px; margin-bottom: 50px;">CREATE</a></center>
+          <p style="margin-bottom: 50px;"></p>
+</form>  
+  </div>
+</div>
+<a class='button glyphicon glyphicon-plus' href='#'></a>
+ 
+</div>
+<script>$('a').on('click', function(){
+  $('.wrap, a').toggleClass('active');
+  
+  return false;
+});</script>
+
+</body>
+</html>
